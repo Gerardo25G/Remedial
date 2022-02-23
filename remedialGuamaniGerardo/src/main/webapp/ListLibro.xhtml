@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition
+	template="blank-page.xhtml">
+	<ui:define name="title">
+        Listar Poductos
+    </ui:define>
+	<ui:define name="content">
+		<h:form>		            
+	
+			Buscar:
+		<div class="search-field d-none d-xl-block">
+              <div class="input-group">
+                <div class="input-group-prepend bg-transparent">
+                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
+                </div>
+					<h:inputText class="search-field d-none d-xl-block"   value="#{libroBean.filtro}"/>
+           			<h:commandButton type="submit" class="btn btn-primary mr-2" action="#{libroBean.buscarLibro()}" value="Buscar"/>
+              </div>
+          </div>
+           	
+			<h:dataTable class="table table-hover" value="#{libroBean.libros}" var="libro">
+				<h:column>
+					<f:facet name="header">N°</f:facet>
+					#{libro.id}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nombre</f:facet>
+					#{libro.nombre}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Categoria</f:facet>
+					#{libro.categoria.nombre}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Disponible</f:facet>
+					#{libro.disponible}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Autores</f:facet>
+					#{libro.autores}
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>
+
+
+
